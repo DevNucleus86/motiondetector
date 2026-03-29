@@ -41,14 +41,14 @@ DIY compact cameras are easy to build and install. This puts you in control of r
 * X86, X86_64, ARMv7 or ARMv8 version of Ubuntu 18.04 or Debian 9 (will most likely work on other Linux based operating systems as well)
 * Internet connection
 * Camera or video file
-* [Install OpenCV](https://github.com/sgjava/install-opencv) or some other method to install latest OpenCV
+* [Install OpenCV](https://github.com/DevNuclues86/install-opencv) or some other method to install latest OpenCV
 
 ### Download project and test
 Since most video hardware acceleration is exposed through FFMPEG you may need to install a custom version. Please check your SBC for special kernels or builds of FFMPEG for hardware acceleration. 
 * `sudo apt install git python3-pip ffmpeg`
 * `sudo -H pip3 install ffmpeg-python`
 * `cd ~/`
-* `git clone --depth 1 https://github.com/sgjava/motiondetector.git`
+* `git clone --depth 1 https://github.com/DevNuclues86/motiondetector.git`
 * `cd ~/motiondetector/codeferm`
 * `export PYTHONPATH=$PYTHONPATH:~/motiondetector`
 * `python videoloop.py`
@@ -62,7 +62,7 @@ I see a lot of posts on the Internet about OpenCV performance on various ARM bas
 
 Problem: Slow or inconsistent FPS using USB camera.
 
-Solution: Use MJPEG compatible USB camera, mjpg-streamer and my [mjpegclient.py](https://github.com/sgjava/motiondetector/blob/master/codeferm/mjpegclient.py).
+Solution: Use MJPEG compatible USB camera, mjpg-streamer and my [mjpegclient.py](https://github.com/DevNuclues86/motiondetector/blob/master/codeferm/mjpegclient.py).
 
 Solution: Use threading and a frame buffer to get consistent FPS from camera. Even with recording video and background events you will get very consistent FPS from cameras that allow you to set the FPS. Some cameras have dynamic FPS based on contrast and light. This can be tricky when dealing with fixed FPS video codecs.
 
@@ -77,14 +77,14 @@ Solution: Analyze only motion ROI (regions of interest). By analyzing only ROI y
 Solution: Use hardware encoding and decoding when available. The Odroid XU4 for instance has hardware H.264 acceleration enabled by default. You can use the h264_v4l2m2m codec for hardware encoding and decoding. 
 
 #### Run Motion Detector
-The default [test.ini](https://github.com/sgjava/motiondetector/blob/master/config/test.ini) is configured to detect pedestrians from a local video file in the project. Try this first and make sure it works properly.
+The default [test.ini](https://github.com/DevNuclues86/motiondetector/blob/master/config/test.ini) is configured to detect pedestrians from a local video file in the project. Try this first and make sure it works properly.
 * `cd ~/motiondetector/codeferm`
 * `export PYTHONPATH=$PYTHONPATH:~/motiondetector`
 * `python videoloop.py`
 * Video will record to ~/motion/test using camera name (default test), date for directory and time for file name
 * This is handy for debugging issues or fine tuning using the same file over and over
 
-Create a new configuration file for [videoloop.py](https://github.com/sgjava/motiondetector/blob/master/codeferm/videoloop.py) to suit your needs.
+Create a new configuration file for [videoloop.py](https://github.com/DevNuclues86/motiondetector/blob/master/codeferm/videoloop.py) to suit your needs.
 
 * `cp ~/motiondetector/config/test.ini ~/camera.ini`
 * `cd ~/motiondetector/codeferm`
